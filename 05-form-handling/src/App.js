@@ -1,11 +1,13 @@
 import 'bootstrap/dist/css/bootstrap.min.css'
 import React from 'react'
-import SurveyForm from './SurveyForm';
+import SurveyFormEx from './SurveyFormEx';
 
 function App() {
   return (
     <React.Fragment>
-      <SurveyForm/>
+      <div className='container'>
+      <SurveyFormEx/>
+      </div>
     </React.Fragment>
   );
 }

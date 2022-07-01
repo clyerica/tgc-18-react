@@ -11,7 +11,7 @@
 * edit src > App.js
 * 'HTML' elements are JSX -> undergoes transpilation to convert react-specific javascript into normal javascript
     * IMPORTANT - HTML errors in JSX will prevent code from running! 
-    * any code within `{}` are javascript objects 
+    * any code within `{}` are **javascript objects**
         * e.g. `<p> 2+2 = {2+2}</p>` will be evaluated to `2+2=4`
         * can only use expressions that evaluate to a value (e.g. no 'if/while/for' statements) -> **use functions instead** or **use ternary operator** or **&&** (evaluates to last truthly value )
             * must return a single value (e.g. null, string etc)
@@ -39,6 +39,8 @@ Props | States
 static/read-only,  cannot be changed within the component | dynamic, can change 
 externally-given (can be inherited from parent component)|internal (not accessible to other components for reading/editing, only to component itself)
 props cannot change/re-render| when state changes, React will re-render the component you update correspendingly 
+use for functional components (e.g. display data like a hbs file)|use for interactive components (data needs to update)
+/| Do not put derived values/intermediate steps into states
 
 \*setState is *asynchronous* -> if you want to call multiple setStates make the preceding one an async await function. 
 
@@ -57,3 +59,24 @@ props cannot change/re-render| when state changes, React will re-render the comp
 * if not, must use function(){}.bind(this) or when calling function, add .bind(this) behind -> to ensure 'this' refers to scope in which function was called (AKA emulates arrow function)
     * bit old-school tho
 
+## List Rendering in JSX
+* convert arrays into arrays of JSX elements 
+    * e.g instead of [apples, bananas, cherries], instead `[<li>apples</li>,<li>bananas</li>,<li>cherries</li>,]`
+* rendering objects -> return within `<React.Fragment>` 
+    * consider making a separate functional component and pass in values through props 
+* unique key ids for each list element for optimisation
+    * prevents react from having to redraw the entire app/component to change one element
+    * otherwise you will get a warning message (app can continue to run but ideally you should fix the issue)
+
+## class based component and constructor 
+*example*
+```
+class Product(
+    name=''
+    cost=0
+    constructor
+)
+```
+
+## json/axios
+* json files MUST be in the public folder
